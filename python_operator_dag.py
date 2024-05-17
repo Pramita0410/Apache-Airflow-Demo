@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+import pandas as pd
 
 default_args = {
     "owner": 'Pramita',
@@ -25,6 +26,9 @@ def who_is_my_wife(ti):
     age = ti.xcom_pull(task_ids = "say_my_spouse_name", key = "age")
     profession = ti.xcom_pull(task_ids = "say_my_spouse_name", key = "profession")
     print(f"My wife's name is {name}. She is {age} years old. She is a {profession}")
+
+def check_pandas_working():
+    print(pd.__version__)
 
 with DAG(
     dag_id = "python_operator_example_dag",
@@ -54,4 +58,9 @@ with DAG(
         python_callable=who_is_my_wife
     )
 
-    task_1 >> task_2 >> task_3 >> task_4
+    task_5 = PythonOperator(
+        task_id = "check_pandas_working",
+        python_callable=check_pandas_working
+    )
+
+    task_1 >> task_2 >> task_3 >> task_4 >> task_5
