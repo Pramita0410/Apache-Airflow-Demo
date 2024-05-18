@@ -1,8 +1,8 @@
-Airflow Architecture
+### Airflow Architecture
 <img width="943" alt="image002" src="https://github.com/Pramita0410/Apache-Airflow-Demo/assets/114774760/f7fc1e71-5c1c-42fa-a8d9-37a75a4c7371">
 
 
-How to install and run Airflow on ubuntu
+### How to install and run Airflow on ubuntu
 
 * Install conda https://docs.anaconda.com/free/anaconda/install/linux/
 * Create a new conda env
